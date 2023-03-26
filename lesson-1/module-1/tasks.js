@@ -1,8 +1,6 @@
 //TODO: 1 ===================================
 // Якщо змінна a дорівнює 10, виведіть 'Вірно', інакше виведіть 'Невірно'.
 
-
-
 // const a = 10;
 // перший варіант if else
 
@@ -16,12 +14,9 @@
 
 // другий варіант тернарний
 
-
 // const message = a === 10 ? "Вірно" : "Не вірно";
 
 // console.log(message);
-
-
 
 //TODO: 2 ===================================
 // У змінній min лежить число від 0 до 60. Визначте у котру чверть години
@@ -44,48 +39,47 @@
 
 // console.log(message);
 
-
-
-
 //TODO: 3 ===================================
 // Змінна num може набувати 4 значення: 1, 2, 3 або 4. Якщо вона має
 // значення '1', то у змінну result запишемо 'зима', якщо має значення
 // '2' - 'весна' і так далі. Розв'яжіть завдання через switch-case.
 
+// const num = 2;
+// let message;
 
-const num = 2;
-let message;
+// switch (num) {
+//     case 1:
+//         message = "Зима";
+//         break;
 
-switch (num) {
-    case 1:
-        message = "Зима";
-        break;
-    
-    case 2:
-        message = "Весна";
-        break;
-    
-    case 3:
-        message = "Літо";
-        break;
-    
-    case 4:
-        message = "Осінь";
-        break;
+//     case 2:
+//         message = "Весна";
+//         break;
 
-    default:
-        message = "Error";
-        break;
-}
+//     case 3:
+//         message = "Літо";
+//         break;
 
-console.log(message);
+//     case 4:
+//         message = "Осінь";
+//         break;
 
+//     default:
+//         message = "Error";
+//         break;
+// }
 
+// console.log(message);
 
-
-
-//TODO: 4 ===================================
+// TODO: 4 ===================================
 // скористаємося циклом while та виведіть у консоль числа від 0 до 50
+
+// let counter = 0;
+
+// while (counter <= 50) {
+//   console.log(counter);
+//   counter += 1;
+// }
 
 //TODO: 5 ===================================
 //Використовуючи конструкцію if...else,
@@ -95,7 +89,13 @@ console.log(message);
 // показати через alert: "Вірно!"
 //інакше відобразити: "Не знаєте? ECMAScript!"
 
-// const question = prompt('Яка «офіційна» назва JavaScript?').toLowerCase();
+// const question = prompt("Яка «офіційна» назва JavaScript?").toLowerCase();
+
+// if (question === "ecmascript") {
+//   alert("Вірно!");
+// } else {
+//   alert("Не знаєте? ECMAScript!");
+// }
 
 //TODO: 6 ===================================
 // Напишіть програму, яка отримає від користувача
@@ -103,6 +103,13 @@ console.log(message);
 //рядок у форматі годин і хвилин
 //70 === 01:10
 // https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/padStart
+
+// const globalMinutes = 70;
+// const minutes = String(globalMinutes % 60).padStart(2, 0);
+// const hours = String(Math.floor(globalMinutes / 60)).padStart(2, 0);
+// console.log(`${hours}:${minutes}`);
+// console.log(minutes);
+// console.log(hours);
 
 //TODO: 7 ===================================
 //Напишіть цикл, який виводить у консоль

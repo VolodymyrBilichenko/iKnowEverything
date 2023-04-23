@@ -4,14 +4,14 @@
 // const product = {
 //     price: 5000,
 //     showPrice() {
-//         console.log(price)
+//         console.log(this.price)
 //     },
 // }
 // product.showPrice()
 
 //TODO:=================2=============================
 
-//Виправте помилки, щоб код працював
+// Виправте помилки, щоб код працював
 // const product = {
 //     price: 5000,
 //     showPrice() {
@@ -23,7 +23,7 @@
 //     action()
 // }
 
-// callAction(product.showPrice)
+// callAction(product.showPrice.bind(product))
 
 // Anser:
 
@@ -44,6 +44,15 @@
   | Розкоментувати ; )
   |============================
 */
+// const User = function ({userName,age,numbersOfPost}) {
+//   this.userName = userName,
+//   this.age = age,
+//     this.numbersOfPost = numbersOfPost
+   
+//   // this.getInfo = function () {console.log(`Користувачеві ${userName} ${age} років і в нього ${numbersOfPost} публікацій.`) }
+
+// }
+// User.prototype.getInfo = function () {console.log(`Користувачеві ${userName} ${age} років і в нього ${numbersOfPost} публікацій.`) }
 // const polly = new User({ userName: 'Polly', age: 30, numbersOfPost: 15 })
 // console.log(polly)
 // polly.getInfo()
@@ -80,16 +89,36 @@
 //removeItem(item) - отримує товар і, якщо він є, видаляє його з поточних
 
 // Aswer:
+// const Storage = function (itemArr) {
+//   this.items = itemArr
+  
+// }
+// Storage.prototype.getItems = function(){
+//   return this.items
+// }
+// Storage.prototype.addItems = function (item) {
+//   this.items.push(item)
+//   return this.items
+// }
+// Storage.prototype.removeItem = function (item) {
+//   const index = this.items.indexOf(item)
+//   if (index !== -1) {
+//     this.items.splice(index, 1)
+//   }
+//   return this.items
+  
+// }
+// /**
+//   |============================
+//   | Розкоментувати ; )
+//   |============================
+// */
+// const storage = new Storage(['apple', 'banana', 'mango'])
 
-/**
-  |============================
-  | Розкоментувати ; )
-  |============================
-*/
-const storage = new Storage(['apple', 'banana', 'mango'])
-
-console.log(storage)
-console.log(storage.removeItem('apple'))
+// console.log(storage)
+// console.log(storage.removeItem('apple'))
+// console.log(storage.addItems('kiwi'))
+// console.log(storage.getItems())
 
 //TODO:=========task-6=================
 /**
@@ -112,7 +141,7 @@ console.log(storage.removeItem('apple'))
 //! Class
 //TODO:=========task-7=================
 //Напиши клас Client який створює об'єкт
-//з ​​властивостями login email
+//з ​властивостями login email
 //Оголоси приватні властивості #login #email,
 //доступ до яких зроби через геттер та сеттер login email
 
@@ -124,12 +153,35 @@ console.log(storage.removeItem('apple'))
   |============================
 */
 
-// const client = new Client('mango', 'mango@gmail.com')
+// class Client { 
+//   #login
+//   #email
+//   constructor(login,email) { 
+//     this.#login = login
+//     this.#email = email
+//   }
+//   get getClientData() { 
+//     return {
+//       login: this.#login,
+//       email: this.#email,
+//     }
+//   }
+//   set changeEmail(newEmail) { 
+//     this.#email = newEmail
+//   }
+//   set changeLogin(newLogin) { 
+//     this.#login = newLogin
+//   }
+// }
 
+
+// const client = new Client('mango', 'mango@gmail.com')
+// console.log(client)
 // client.changeEmail = 'mango555@gmail.com'
 // console.log(client.getClientData.email)
 // client.changeLogin = '12345'
 // console.log(client.getClientData.login)
+
 
 //TODO:=========task-8=================
 //Напиши клас Notes який управляє колекцією нотаток у
@@ -201,42 +253,82 @@ console.log(storage.removeItem('apple'))
 //і який успадковує клас Worker, додаючи метод getHierarchyLevel
 //Реалізувати завдання за допомогою ES5 прототипів та ES6 класів
 
-const HIERARCHY_LEVEL = {
-    TOP: 'top',
-    BOTTOM: 'bottom',
-}
+// const HIERARCHY_LEVEL = {
+//     TOP: 'top',
+//     BOTTOM: 'bottom',
+// }
 
-const workerObj = {
-    name: 'Mango',
-    surname: 'Worker',
-    age: 30,
-    position: 'FE developer',
-    salary: 5000,
-}
+// const workerObj = {
+//     name: 'Mango',
+//     surname: 'Worker',
+//     age: 30,
+//     position: 'FE developer',
+//     salary: 5000,
+// }
 
-ES5
+// // ES5
 
-// Aswer:
-
-/**
-  |============================
-  | Розкоментувати ; )
-  |============================
-*/
+// // Aswer:
+// const Worker = function ({ name,surname,age,position,salary}) { 
+//   this.name = name
+//   this.surname = surname
+//   this.age = age
+//   this.position = position
+//   this.salary = salary
+// }
+// Worker.prototype.getSalary = function () { 
+//   return this.salary
+// }
+// const TopLevelWorker = function (obj,hierarchyLevel) { 
+//   Worker.call(this, obj)
+  
+//   this.hierarchyLevel = hierarchyLevel
+// }
+// TopLevelWorker.prototype.getHierarchyLevel = function () { 
+//   return this.hierarchyLevel
+// }
+// TopLevelWorker.prototype.getSalary = Worker.prototype.getSalary
+// // /**
+// //   |============================
+// //   | Розкоментувати ; )
+// //   |============================
+// // */
 
 // const worker = new TopLevelWorker(workerObj, HIERARCHY_LEVEL.BOTTOM)
 // console.log(worker)
 // console.log(worker.getSalary())
 // console.log(worker.getHierarchyLevel())
 
-ES6
-// Aswer:
+// // ES6
+// // Aswer:
 
-/**
-  |============================
-  | Розкоментувати ; )
-  |============================
-*/
+// /**
+//   |============================
+//   | Розкоментувати ; )
+//   |============================
+// */
+// class WorkerES6 { 
+//   constructor({ name,surname,age,position,salary}) { 
+//   this.name = name
+//   this.surname = surname
+//   this.age = age
+//   this.position = position
+//   this.salary = salary
+//   }
+//   getSalary() { 
+//     return this.salary
+//   }
+// }
+// class TopLevelWorkerES6 extends WorkerES6 { 
+//   constructor(obj, hierarchyLevel) { 
+//     super(obj)
+//     this.hierarchyLevel = hierarchyLevel
+//   }
+//   getHierarchyLevel() { 
+//     return this.hierarchyLevel
+//   }
+// }
+
 
 // const topWorker = new TopLevelWorkerES6(workerObj, HIERARCHY_LEVEL.TOP)
 // console.log(topWorker)
@@ -247,38 +339,38 @@ ES6
 // Створити гру за допомогою класів. Створити class Героя, Створити class гравця, Створити class гри.
 
 // Список Героїв
-const HERO_LIST = [
-    {
-        name: 'thor',
-        health: 2000,
-        damage: 300,
-    },
-    {
-        name: 'thanos',
-        health: 2200,
-        damage: 350,
-    },
-    {
-        name: 'hulk',
-        health: 2800,
-        damage: 400,
-    },
-]
+// const HERO_LIST = [
+//     {
+//         name: 'thor',
+//         health: 2000,
+//         damage: 300,
+//     },
+//     {
+//         name: 'thanos',
+//         health: 2200,
+//         damage: 350,
+//     },
+//     {
+//         name: 'hulk',
+//         health: 2800,
+//         damage: 400,
+//     },
+// ]
 
-// Створюємо екземпляр Гравця 1
-const player1 = new Player('John')
-// Выбираем Героя
-player1.selectHero('hulk')
+// // Створюємо екземпляр Гравця 1
+// const player1 = new Player('John')
+// // Выбираем Героя
+// player1.selectHero('hulk')
 
-// Створюємо екземпляр Гравця 2
-const player2 = new Player('Tom')
-// Обираємо Героя
-player2.selectHero('thor')
+// // Створюємо екземпляр Гравця 2
+// const player2 = new Player('Tom')
+// // Обираємо Героя
+// player2.selectHero('thor')
 
-// console.log(player1);
-// console.log(player2);
+// // console.log(player1);
+// // console.log(player2);
 
-const game = new Game(player1, player2)
-// console.log(game);
+// const game = new Game(player1, player2)
+// // console.log(game);
 
-// game.run() // Кнопка Start!
+// // game.run() // Кнопка Start!

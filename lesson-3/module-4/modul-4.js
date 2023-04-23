@@ -316,6 +316,11 @@ const users = [
 //     Хмельницький: new Date('2020-04-18'),
 //     Харків: new Date('2023-07-10'),
 // }
+// function concertsToArray(object){ 
+//     return Object.keys(object)
+//         .filter(city => object[city] > new Date())
+//         .sort((a, b) => object[a] - object[b])
+// }
 
 // console.log(concertsToArray(concerts))
 

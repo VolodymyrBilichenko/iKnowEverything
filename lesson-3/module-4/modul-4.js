@@ -7,6 +7,17 @@
 //Рядок "Привіт <name>"
 //Реалізуй перевірку, що prompt не порожній
 
+// function letMeSeeYourName(callback) {
+//     const name = prompt("Введіть своє ім'я");
+//     callback(name);
+// }
+// function greet(name) {
+//     console.log(`Привіт ${name}`);
+// }
+
+// letMeSeeYourName(greet);
+
+
 //TODO:=================02=============================
 //Напишіть дві функції
 //makeProduct(name, price, callback) - приймає
@@ -17,10 +28,48 @@
 //showProduct(product) - коллбек приймаючий об'єкт
 //продукту і логірующий їх у консоль
 
+// function makeProduct(name, price, callback) {
+//     const id = Math.floor(Math.random() * 1000);
+
+//     const product = {
+//         id,
+//         name,
+//         price,
+//     };
+//     callback(product);
+// }
+
+// function showProduct(product) {
+//     console.log(`Товар з id: ${product.id}, Ім'я: ${product.name}, Ціна ${product.price}.`);
+// }
+
+// makeProduct("молоко", 50, showProduct);
+// makeProduct("сир", 150, showProduct);
+// makeProduct("банан", 40, showProduct);
+// makeProduct("яблоко", 20, showProduct);
+// makeProduct("олія", 80, showProduct);
+
+
+
+
 //TODO:=================03=============================
 // Напишіть функцію makeShef(shefName), яка повертає функцію
 // makeDish(dish), що пам'ятає ім'я шефа при її виклику
 // Функція makeDish має логірувати "<shef> is cooking <dish>"
+
+// function makeShef(shefName){
+//     return function makeDish(dish){console.log(`${shefName} готує ${dish}`)};
+// }
+
+// const shef1 = makeShef("Володимир");
+// // console.log(shef1);
+// const shef2 = makeShef("Сергій");
+
+// shef1("стейки");
+// shef2("драники");
+
+
+
 
 //TODO:=================04=============================
 //Напишіть функцію each(array, callback), яка
@@ -30,7 +79,23 @@
 //якого будуть результати виклику callback
 //callback функції повинна множити елементи на 2
 
-const array = [3, 5, 6, 34, 8, 83, 12, 34]
+// const array = [3, 5, 6, 34, 8, 83, 12, 34];
+
+// function each(array, callback) {
+//     const newArr = [];
+//     for (const number of array) {
+//         newArr.push(callback(number));
+//     }
+//     return newArr;
+// }
+
+// function mylti(number) {
+//     return number *= 2;
+// }
+// console.log(each(array, mylti));
+
+
+
 
 //TODO:==================05============================
 //Напишіть функцію makeCounter, яка повертає іншу

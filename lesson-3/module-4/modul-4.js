@@ -101,22 +101,50 @@
 //Напишіть функцію makeCounter, яка повертає іншу
 //функцію, яка вважає та логує кількість своїх викликів
 
+// function makeCounter(){
+//     let counter = 0;
+//     return () => (counter += 1)
+// }
+
+// const result = makeCounter()
+
+// console.log(result())
+// console.log(result())
+// console.log(result())
+// console.log(result())
+// console.log(result())
+
+
 //TODO:==================06============================
 //Напишіть функцію savePassword(password), яка приймає
 //пароль і повертає внутрішню функцію, що приймає
 //рядок і повертає буль true, якщо рядок збігається зі збереженим
 //паролем і false - якщо не збігається
 
+// function savePassword(password) {
+//     return (ourPassword) => ourPassword === password
+// }
+
+// const chekPassword = savePassword("admin")
+// console.log(chekPassword("admin"))
+
+
+// Д/З:
+
 //TODO:====================07==========================
 //Напишіть функцію для зберігання знижки. Функція повертає
 //Іншу функцію, яка приймає суму покупки
 //і повертає фінальну суму із збереженою знижкою.
 
+
 //! Методи масивів
 //TODO:=========task-8=================
 // ? Знайдіть перше непарне число
 
-// const numbers = [2, 1, 6, 8, 9, 10, 12]
+// const numbers = [3, 2, 1, 6, 8, 9, 10, 12]
+
+// console.log(numbers.find((number) =>number % 2 !== 0));
+// console.log(numbers)
 
 //TODO:===========task-9===============
 
@@ -210,14 +238,28 @@ const users = [
 //TODO:==========================
 // Отримати масив імен всіх користувачів (поле name).
 
+// console.log(users.map(user => user.name))
+
 //TODO:==========================
 // Отримати масив об'єктів користувачів за кольором очей (eyeColor).
+
+// function getUsersByColor(array, eyeColor) {
+//     return array.filter(user => user.eyeColor === eyeColor)
+// }
 
 // console.log(getUsersByColor(users, 'brown'))
 // console.log(getUsersByColor(users, 'blue')) // [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
 
 //TODO:==========================
 // Отримати масив імен користувачів за статтю (поле gender)
+
+// function getUsersWithGender(array, gen) {
+//     return array.reduce((acc, element) => {
+//         if(element.gender === gen) acc.push(element.name)
+//         return acc
+        
+//     }, [])
+// }
 
 // console.log(getUsersWithGender(users, 'male')); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
 
@@ -234,6 +276,8 @@ const users = [
 
 //TODO:==========================
 // Отримати загальну суму балансу (поле balance) всіх користувачів.
+
+// const calculateTotalBalance = array => array.reduce((acc, element) => (element.balance += acc), 0)
 
 // console.log(calculateTotalBalance(users)); // 20916
 

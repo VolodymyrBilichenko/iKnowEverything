@@ -59,3 +59,56 @@
     перевірки і пишемо логіку. Обчислення олбимо за допомогою "switch". 
   |============================
 */
+
+const showBtmEl = document.querySelector(".js-show__btn");
+const containerEl = document.querySelector(".js-container");
+
+showBtmEl.addEventListener("click", (event) => {
+  
+  if(showBtmEl.textContent === "Приховати калькулятор"){
+    containerEl.innerHTML = "";
+    showBtmEl.textContent = "Показати калькулятор";
+    showBtmEl.classList.remove("calc-close");
+    return
+  }
+
+  const markUp = 
+  `<div class="calculator js-calculator">
+  <div class="calculator-display">
+    <input class="js-result" type="text" name="result" value="0" disabled />
+  </div>
+  <div class="calculator-row">
+    <button class="calculator-button calculator-button-gray">C</button>
+    <button class="calculator-button calculator-button-gray">+/-</button>
+    <button class="calculator-button calculator-button-gray">%</button>
+    <button class="calculator-button calculator-button-orange">/</button>
+  </div>
+  <div class="calculator-row">
+    <button class="calculator-button">7</button>
+    <button class="calculator-button">8</button>
+    <button class="calculator-button">9</button>
+    <button class="calculator-button calculator-button-orange">*</button>
+  </div>
+  <div class="calculator-row">
+    <button class="calculator-button">4</button>
+    <button class="calculator-button">5</button>
+    <button class="calculator-button">6</button>
+    <button class="calculator-button calculator-button-orange">-</button>
+  </div>
+  <div class="calculator-row">
+    <button class="calculator-button">1</button>
+    <button class="calculator-button">2</button>
+    <button class="calculator-button">3</button>
+    <button class="calculator-button calculator-button-orange">+</button>
+  </div>
+  <div class="calculator-row">
+    <button class="calculator-button calculator-button-double">0</button>
+    <button class="calculator-button">.</button>
+    <button class="calculator-button calculator-button-orange">=</button>
+  </div>
+</div>`;
+containerEl.insertAdjacentHTML("afterbegin", markUp);
+showBtmEl.textContent = "Приховати калькулятор";
+showBtmEl.classList.add("calc-close");
+})
+

@@ -10,6 +10,37 @@
   |  - Клас який відповідає за ,відображення і скриття модального вікна "is-open"
   |============================
 */
+const openModalBtnEl = document.querySelector(".js-modal-open");
+const backdropEl = document.querySelector(".js-backdrop");
+const closeModalBtnEl = document.querySelector(".js-modal-close");
+
+openModalBtnEl.addEventListener("click", onOpenModalBtnElClick);
+function onOpenModalBtnElClick(evt) {
+  window.addEventListener("keydown", onEscClick);
+  window.addEventListener("click", onBackdropClick);
+  backdropEl.classList.add("is-open");
+}
+
+closeModalBtnEl.addEventListener("click", closeModalWindow);
+function closeModalWindow(evt) {
+  window.removeEventListener("keydown", onEscClick);
+  window.removeEventListener("click", onBackdropClick);
+  backdropEl.classList.remove("is-open");
+}
+
+function onEscClick(evt) {
+  if (evt.code !== "Escape") {
+    return;
+  }
+  closeModalWindow();
+}
+
+function onBackdropClick(evt) {
+  if (backdropEl !== evt.target) {
+    return;
+  }
+  closeModalWindow();
+}
 
 /**
   |============================
@@ -26,6 +57,27 @@
   |  - Після отправки почисти форму і реалізуй автоматичне закриття модального вікна
   |============================
 */
+
+const submitFormEl = document.querySelector(".js-modal__form");
+submitFormEl.addEventListener("submit", onSubmit);
+function onSubmit(evt) {
+  evt.preventDefault();
+  const {
+    elements: { name, email, password },
+  } = evt.currentTarget;
+  console.log(name.value, email.value, password.value);
+  if (!email.value || !password.value) {
+    return alert("email or password is empty");
+  }
+  const userData = {
+    name: name.value || "anonimus",
+    email: email.value,
+    password: password.value,
+  };
+  console.log(userData);
+  submitFormEl.reset();
+  closeModalWindow();
+}
 
 //TODO:====================02====================================TODOS============================================================================================
 /**
@@ -47,3 +99,52 @@
   | забувай чистити розмітку перед її вставкою.
   |============================
 */
+const formEl = document.querySelector(".js-todos__form");
+const ulEl = document.querySelector("ul");
+let items = [];
+
+ulEl.addEventListener("click", onBtnClick);
+formEl.addEventListener("submit", onClickSubmit);
+function onClickSubmit(evt) {
+  evt.preventDefault();
+  const input = evt.currentTarget.elements["user-todos"];
+
+  const toDos = input.value.trim();
+
+  if (!toDos) {
+    return alert("Введіть данні!");
+  }
+
+  const item = {
+    id: Date.now(),
+    text: toDos,
+  };
+
+  items.push(item);
+  input.value = "";
+  updateList();
+}
+
+function updateList() {
+  const markup = items.map((el) => {
+    const liEl = document.createElement("li");
+    const spanEl = document.createElement("span");
+    spanEl.textContent = el.text;
+    liEl.appendChild(spanEl);
+    const btnEl = document.createElement("button");
+    btnEl.type = "button";
+    btnEl.setAttribute("data-id", el.id);
+    btnEl.classList.add("delete");
+    btnEl.textContent = "Видалити";
+    liEl.appendChild(btnEl);
+    return liEl;
+  });
+  ulEl.innerHTML = "";
+  ulEl.append(...markup);
+}
+
+function onBtnClick(evt) {
+  const toDosID = Number(evt.target.dataset.id);
+  items = items.filter((el) => el.id !== toDosID);
+  updateList();
+}
